@@ -12,5 +12,13 @@
             "name": "Tom H Anderson",
             "email": "tom.h.anderson@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "ZF\\Doctrine\\ORM\\DataValidation\\": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
 }
