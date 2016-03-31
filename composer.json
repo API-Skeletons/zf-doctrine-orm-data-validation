@@ -1,0 +1,16 @@
+{
+    "name": "api-skeletons/zf-doctrine-orm-data-validation",
+    "description": "Validate foreign key relationships in data",
+    "require": {
+        "doctrine/doctrine-orm-module": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    },
+    "authors": [
+        {
+            "name": "Tom H Anderson",
+            "email": "tom.h.anderson@gmail.com"
+        }
+    ]
+}
