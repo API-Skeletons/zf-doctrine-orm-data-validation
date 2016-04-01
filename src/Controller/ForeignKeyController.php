@@ -33,6 +33,8 @@ class ForeignKeyController extends AbstractActionController
         $console->write(
             'Count'
             . "\t"
+            . 'Distinct Values'
+            . "\t"
             . 'Child Field'
             . "\t"
             . 'Child Entity'
@@ -52,7 +54,9 @@ class ForeignKeyController extends AbstractActionController
                     $queryBuilder2 = $objectManager->createQueryBuilder();
 
                     $queryBuilder->select(
-                        "count(child) as ct, '"
+                        "count(child) as ct, count(distinct child."
+                        . $mapping['fieldName']
+                        . ") as dst, '"
                         . $mapping['fieldName']
                         . "' as childField, '"
                         . $metadata->getName()
@@ -94,7 +98,10 @@ class ForeignKeyController extends AbstractActionController
                         $childMapping = $objectManager->getMetadataFactory()
                         ->getMetadataFor($metadata->getName());
 
-                        $console->write($result['ct']
+                        $console->write(
+                            $result['ct']
+                            . "\t"
+                            . $result['dst']
                             . "\t"
                             . $result['childField']
                             . "\t"
