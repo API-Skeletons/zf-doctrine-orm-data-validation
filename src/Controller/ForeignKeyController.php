@@ -38,6 +38,8 @@ class ForeignKeyController extends AbstractActionController
             . 'Child Entity'
             . "\t"
             . 'Parent Entity'
+            . "\t"
+            . 'SQL'
             . "\n"
         );
 
