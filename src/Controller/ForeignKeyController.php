@@ -53,21 +53,23 @@ class ForeignKeyController extends AbstractActionController
                     $queryBuilder = $objectManager->createQueryBuilder();
                     $queryBuilder2 = $objectManager->createQueryBuilder();
 
-                    $queryBuilder->select(
-                        "count(child) as ct, count(distinct child."
-                        . $mapping['fieldName']
-                        . ") as dst, '"
-                        . $mapping['fieldName']
-                        . "' as childField, '"
-                        . $metadata->getName()
-                        . "' as childEntity, '"
-                        . $mapping['targetEntity']
-                        . "' as parentEntity"
+                    $queryBuilder
+                        ->select(
+                            "count(child) as ct, count(distinct child."
+                            . $mapping['fieldName']
+                            . ") as dst, '"
+                            . $mapping['fieldName']
+                            . "' as childField, '"
+                            . $metadata->getName()
+                            . "' as childEntity, '"
+                            . $mapping['targetEntity']
+                            . "' as parentEntity"
                         )
                         ->from($metadata->getName(), 'child')
                         ->andWhere($queryBuilder->expr()->not(
                             $queryBuilder->expr()->exists(
-                                $queryBuilder2->select('parent')
+                                $queryBuilder2
+                                    ->select('parent')
                                     ->from($mapping['targetEntity'], 'parent')
                                     ->andWhere($queryBuilder2->expr()->eq(
                                         'child.' . $mapping['fieldName'],
@@ -75,9 +77,8 @@ class ForeignKeyController extends AbstractActionController
                                     ))
                                     ->getQuery()
                                     ->getDql()
-                                )
                             )
-                        )
+                        ))
                         ;
 
                     // Do not query columns which are nullable and are null
@@ -96,7 +97,7 @@ class ForeignKeyController extends AbstractActionController
 
                     if ($result['ct']) {
                         $childMapping = $objectManager->getMetadataFactory()
-                        ->getMetadataFor($metadata->getName());
+                            ->getMetadataFor($metadata->getName());
 
                         $console->write(
                             $result['ct']
