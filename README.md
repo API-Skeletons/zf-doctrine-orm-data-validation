@@ -32,7 +32,7 @@ Add to `config/development.config.php.dist`:
 ```php
 return array(
     'modules' => array(
-        'ZF\\Doctrine\\Audit'
+        'ZF\\Doctrine\\ORM\\DataValidation'
         ...
     ),
 ```
