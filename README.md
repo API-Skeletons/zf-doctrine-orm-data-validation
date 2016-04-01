@@ -20,7 +20,7 @@ which is missing it's foreign key.  Nullable relationships are not evaluated.
 php index.php orm:data-validation:relationship --object-manager="doctrine.entitymanager.orm_default"
 ```
 
-This will output TSV with the Count, Child Field, Child Entity, Parent Entity for all relationships where data is found in the child which references data not found in the parent.
+This will output TSV with the Count, Child Field, Child Entity, Parent Entity, and the SQL to duplicate the results for all relationships where data is found in the child which references data not found in the parent.
 
 
 Configure Zend Framework 2 Module
