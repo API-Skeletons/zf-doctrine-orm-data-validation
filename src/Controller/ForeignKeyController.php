@@ -89,6 +89,9 @@ class ForeignKeyController extends AbstractActionController
                     $result = $queryBuilder->getQuery()->getOneOrNullResult();
 
                     if ($result['ct']) {
+                        $childMapping = $objectManager->getMetadataFactory()
+                        ->getMetadataFor($metadata->getName());
+
                         $console->write($result['ct']
                             . "\t"
                             . $result['childField']
@@ -96,6 +99,8 @@ class ForeignKeyController extends AbstractActionController
                             . $result['childEntity']
                             . "\t"
                             . $result['parentEntity']
+                            . "\t"
+                            . $queryBuilder->getQuery()->getSql()
                             . "\n"
                         );
                     }
