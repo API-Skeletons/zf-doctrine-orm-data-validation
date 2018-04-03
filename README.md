@@ -1,6 +1,9 @@
 Doctrine ORM Data Validation
 ============================
 
+[![Gitter](https://badges.gitter.im/api-skeletons/open-source.svg)](https://gitter.im/api-skeletons/open-source)
+[![Total Downloads](https://poser.pugx.org/api-skeletons/zf-doctrine-orm-data-validation/downloads)](https://packagist.org/packages/api-skeletons/zf-doctrine-orm-data-validation)
+
 For one reason or another you will build an ORM on top of an existing database.  The existing database may
 not have referential integrity for all it's relationships.
 
